@@ -1,0 +1,24 @@
+<form name="loginForm" method="post" novalidate ng-submit="$ctrl.login();">
+  <div>
+    <label for="">Email</label>
+    <input 
+      type="email" 
+      name="email" 
+      required="required"
+      ng-model="$ctrl.userData.email">
+  </div>
+  <div>
+    <label for="">Password</label>
+    <input 
+      type="password" 
+      name="password" 
+      required="required"
+      ng-model="$ctrl.userData.password">
+  </div>
+  <div>
+    <button
+      type="submit"
+      ng-disabled="loginForm.$invalid"
+      >Login</button>
+  </div>
+</form>

@@ -1,0 +1,9 @@
+{
+  "spa" : true,
+  "projectDirectory" : "client",
+  "cssDirectory" : "css",
+  "cssRawBundle" : "css/main.styl",
+  "jsDirectory" : "app",
+  "jsRawBundle" : "app/entry.js",
+  "jsBundle" : "bundle.js"
+}
