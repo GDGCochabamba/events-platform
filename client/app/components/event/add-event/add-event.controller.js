@@ -1,16 +1,19 @@
-function AddEventController() {
+function AddEventController($log, EventService) {
   var ctrl = this;
 
   ctrl.$onInit  = onInit;
   ctrl.add = add;
 
   function add() {
-    console.log('Going to save:', ctrl.event);
+    EventService.add(ctrl.event).then(function(ref){
+      var id = ref.key;
+      $log.info('[AddEventController]', 'added record with id:', id);
+    });
   }
 
   function onInit() {
     ctrl.event = {
-      name: 'Test'
+      name: 'Event name 1'
     };
   }
 }
