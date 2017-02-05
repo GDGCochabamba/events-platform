@@ -1,1 +1,1 @@
-# emotion-rox-cms
+# GDG Events Platform
