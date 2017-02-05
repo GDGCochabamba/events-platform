@@ -1,5 +1,5 @@
 angular
-  .module('bluTodo', [
+  .module('eventsPlatform', [
     'ui.router',
     'firebase',
     'templates',

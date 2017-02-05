@@ -3,7 +3,7 @@ var root = {
 }
 
 angular
-  .module('bluTodo')
+  .module('eventsPlatform')
   .component('root', root)
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');

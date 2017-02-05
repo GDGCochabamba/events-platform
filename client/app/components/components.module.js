@@ -8,3 +8,4 @@ angular
 require('./auth/auth.module');
 require('./events/event.module');
 require('./attendees/attendees.module');
+require('./event/event.module');

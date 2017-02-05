@@ -2,14 +2,20 @@ var app = {
   templateUrl: 'app.html',
   controller: function(AuthService, $state) {
 
-    this.logout = function() {
+    this.addEvent = addEvent;
+    this.logout = logout;
+
+    function addEvent() {
+      $state.go('addEvent');
+    }
+    
+    function logout() {
        AuthService
         .logout()
         .then(function() {
           $state.go('auth.login');
         });
     }
-
   }
 }
 
