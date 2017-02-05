@@ -1,0 +1,29 @@
+<form name="addForm" method="post" novalidate ng-submit="$ctrl.add()">    
+    <div>
+        <label for="name">Nombre</label>
+        <input type="text" name="firstName" data-ng-model="$ctrl.user.firstName" required>
+    </div>
+    <div>
+        <label for="name">Apellido</label>
+        <input type="text" name="lastName" data-ng-model="$ctrl.user.lastName">
+    </div>
+    <div>
+        <label for="name">Fecha de nacimiento</label>
+        <input type="text" name="birthDate" data-ng-model="$ctrl.user.birthDate">
+    </div>
+    <div>
+        <label for="name">Telefono</label>
+        <input type="text" name="phone" data-ng-model="$ctrl.user.phone">
+    </div>
+    <div>
+        <label for="name">Genero</label>
+        <input type="text" name="gender" data-ng-model="$ctrl.user.gender">
+    </div>
+    
+    <div>
+        <button type="submit" 
+                ng-disabled="addForm.$dirty && addForm.$invalid">
+            Add User
+        </button>
+    </div>
+</form>

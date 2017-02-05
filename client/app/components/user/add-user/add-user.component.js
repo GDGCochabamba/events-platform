@@ -1,4 +1,4 @@
-var addEvent = {
+var addUser = {
   bindings: {
   },
   templateUrl: 'add-user.html',
@@ -6,7 +6,7 @@ var addEvent = {
 }
 
 angular
-  .module('components.event')
+  .module('components.user')
   .component('addUser', addUser)
   .config(function($stateProvider) {
     $stateProvider

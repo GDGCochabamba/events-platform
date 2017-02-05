@@ -5,15 +5,15 @@ function AddUserController($log, UserService) {
   ctrl.add = add;
 
   function add() {
-    UserService.add(ctrl.event).then(function(ref){
+    UserService.add(ctrl.user).then(function(ref){
       var id = ref.key;
       $log.info('[AddUserController]', 'added record with id:', id);
     });
   }
 
   function onInit() {
-    ctrl.event = {
-      name: 'User 1'
+    ctrl.user = {
+      firstName: 'Martin'
     };
   }
 }
