@@ -1,7 +1,7 @@
 function EventService($log, $firebaseArray, $firebaseObject, $q) {
-  var ref = firebase.database().ref().child('events'),
-      list = $firebaseArray(ref),
+  var refEventList = firebase.database().ref().child('events'),
       refEventAttendees = firebase.database().ref().child('eventAttendees'),
+      list = $firebaseArray(refEventList),
       obj,
       service = {
           add: add,
@@ -10,13 +10,13 @@ function EventService($log, $firebaseArray, $firebaseObject, $q) {
           addAttendeeToEvent: addAttendeeToEvent
       };
 
-  return service;
+      return service;
 
       function add(event) {
         $log.info('[EventService]', 'add event', event);
         var deferred = $q.defer();
-        list.$add(event).then(function(ref) {
-            deferred.resolve(ref);
+        list.$add(event).then(function(refEventList) {
+            deferred.resolve(refEventList);
         }, function(error){
             deferred.reject(error);
         });
@@ -27,7 +27,7 @@ function EventService($log, $firebaseArray, $firebaseObject, $q) {
       function getByKey(key) {
         var deferred = $q.defer();
 
-        obj = $firebaseObject(ref.child(key));
+        obj = $firebaseObject(refEventList.child(key));
         obj.$loaded().then(function(response) {
             deferred.resolve(response);
         }, function(error){
@@ -39,7 +39,7 @@ function EventService($log, $firebaseArray, $firebaseObject, $q) {
 
 
       function getList() {
-        return $firebaseArray(ref);
+        return $firebaseArray(refEventList);
       }
 
   /**
