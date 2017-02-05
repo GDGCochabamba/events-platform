@@ -1,10 +1,13 @@
-function EventService($log, $firebaseArray, $q) {
+function EventService($log, $firebaseArray, $firebaseObject, $q) {
   var ref = firebase.database().ref().child('events'),
-    list = $firebaseArray(ref);
-  service = {
-    add: add,
-    list: getList
-  };
+      refEventAttendees = firebase.database().ref().child('eventAttendees'),
+      list = $firebaseArray(ref);
+      service = {
+          add: add,
+          list: getList,
+          addAttendeeToEvent: addAttendeeToEvent
+      };
+
 
   return service;
 
@@ -19,9 +22,29 @@ function EventService($log, $firebaseArray, $q) {
 
     return deferred.promise;
   }
-
+  
   function getList() {
     return $firebaseArray(ref);
+  }
+
+  /**
+   * Add an Attendee to an Event
+   * 
+   * This function could be implemented in a controller like this.
+   * EventService.addAttendeeToEvent('-KcAdnjmc9KUI8j2qDG0', '7FFO5VnuygMVW9nxRtBJEbdJ2O13');
+   * 
+   * @param {string} uidEvent - UID of event.
+   * @param {string} uidAttendee - UID of Attendee.
+   * @return {void}
+   */
+  function addAttendeeToEvent(uidEvent, uidAttendee) {
+    // Create a firebase object using the reference eventAttendees collection and Event UID.
+    var attende = $firebaseObject(refEventAttendees.child(uidEvent));
+    // Add attendee to the attende object 
+    // We could use here something like this: attende[uidAttendee] = { resources: 1, assisted: 1 }
+    attende[uidAttendee] = true;
+    // Save attendee informartion
+    attende.$save();
   }
 }
 
