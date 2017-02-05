@@ -1,10 +1,10 @@
 {
-  "name": "blueprints-to-create-todo-list",
-  "version": "0.1.0",
-  "description": "Blueprints to create todo list",
+  "name": "events-platform",
+  "version": "0.2.1",
+  "description": "Events platform created for GDG Cochabamba",
   "repository": {
     "type": "git",
-    "url": "https://github.com/juliosguz/blueprints-to-create-todo-list"
+    "url": "https://github.com/GDGCochabamba/events-platform"
   },
   "devDependencies": {
     "browser-sync": "^2.11.1",
