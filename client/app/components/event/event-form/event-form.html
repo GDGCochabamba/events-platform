@@ -1,0 +1,65 @@
+<form name="eventForm" method="post" novalidate ng-submit="$ctrl.doAction();">
+    <div>
+        <label for="name">Nombre</label>
+        <input type="text" name="name" data-ng-model="$ctrl.event.name" required>
+    </div>
+    <div>
+        <label for="name">Fecha inicio</label>
+        <input type="text" name="startDate" data-ng-model="$ctrl.event.start_date" required>
+    </div>
+    <div>
+        <label for="name">Fecha Fin</label>
+        <input type="text" name="endDate" data-ng-model="$ctrl.event.end_date" required>
+    </div>
+    <div>
+        <label for="name">Lugar</label>
+        <input type="text" name="location" data-ng-model="$ctrl.event.location">
+    </div>
+    <div>
+        <label for="name">Descripcion</label>
+        <input type="text" name="description" data-ng-model="$ctrl.event.description">
+    </div>
+    <div>
+        <label for="name">Inscritos</label>
+        <input type="text" name="attendees" data-ng-model="$ctrl.event.attendees">
+    </div>
+    <div>
+        <label for="name">Costos</label>
+        <input type="text" name="cost" data-ng-model="$ctrl.event.cost">
+    </div>
+    <div>
+        <label for="name">Imagenes del evento url</label>
+        <input type="text" name="eventImages" data-ng-model="$ctrl.event.event_images">
+    </div>
+    <div>
+        <label for="name">Expositores</label>
+        <input type="text" name="speakers" data-ng-model="$ctrl.event.speakers">
+    </div>
+    <div>
+        <label for="name">Recursos</label>
+        <input type="text" name="resources" data-ng-model="$ctrl.event.resources">
+    </div>
+    <div>
+        <label for="name">Cronograma</label>
+        <input type="text" name="schedule" data-ng-model="$ctrl.event.schedule">
+    </div>
+    <div>
+        <label for="name">Redes Sociales</label>
+        <input type="text" name="socialMedia" data-ng-model="$ctrl.event.social_media">
+    </div>
+    <div>
+        <label for="name">Organizadores</label>
+        <input type="text" name="organizers" data-ng-model="$ctrl.event.organizers">
+    </div>
+    <div>
+        <label for="name">Auspiciadores</label>
+        <input type="text" name="sponsors" data-ng-model="$ctrl.event.sponsors">
+    </div>
+
+    <div>
+        <button type="submit" 
+                ng-disabled="eventForm.$invalid">
+            Add Event
+        </button>
+    </div>
+</form>
