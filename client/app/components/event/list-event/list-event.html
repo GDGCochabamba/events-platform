@@ -1,5 +1,5 @@
 <ul>
   <li ng-repeat="event in $ctrl.list">
-    {{event.name}}: {{event.description}}
+    <a ng-click="$ctrl.viewEvent(event)">{{event.name}}: {{event.description}}</a>
   </li>
 </ul>

@@ -1,9 +1,16 @@
-function EventListController(EventService) {
+function EventListController(EventService, $state) {
   var ctrl = this;
-  ctrl.$onInit  = onInit;
+  ctrl.$onInit = onInit;
+  ctrl.viewEvent = viewEvent;
+
   function onInit() {
-      ctrl.list = EventService.list();
-      console.log(ctrl);
+    ctrl.list = EventService.list();
+  }
+
+  function viewEvent(event) {
+    $state.go('attendeesList', {
+      id: event.$id
+    });
   }
 }
 
