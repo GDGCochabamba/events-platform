@@ -5,7 +5,8 @@ function EventService($log, $firebaseArray, $firebaseObject, $q) {
       service = {
           add: add,
           list: getList,
-          addAttendeeToEvent: addAttendeeToEvent
+          addAttendeeToEvent: addAttendeeToEvent,
+          getEventAttendees: getEventAttendees
       };
 
 
@@ -25,6 +26,17 @@ function EventService($log, $firebaseArray, $firebaseObject, $q) {
   
   function getList() {
     return $firebaseArray(ref);
+  }
+
+  function getEventAttendees(eventUID) {
+    var eventAttendees = $firebaseObject(refEventAttendees.child(eventUID));
+    var deferred = $q.defer();
+    eventAttendees.$loaded().then(function (attendees) {
+      deferred.resolve(attendees);
+    }, function (error) {
+      deferred.reject(error);
+    });
+    return deferred.promise;
   }
 
   /**
