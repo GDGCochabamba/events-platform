@@ -1,10 +1,10 @@
 var eventList = {
-  templateUrl: 'eventList.html',
-  controller: 'EventListController as ctrl'
+  templateUrl: 'list-event.html',
+  controller: 'EventListController'
 };
 
 angular
-  .module('components.events')
+  .module('components.event')
   .component('eventList', eventList)
   .config(function($stateProvider) {
     $stateProvider
@@ -14,4 +14,4 @@ angular
       });
   });
 
-require('./eventList.controller');
+require('./list-event.controller');
