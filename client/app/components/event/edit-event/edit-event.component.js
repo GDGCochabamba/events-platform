@@ -11,7 +11,7 @@ angular
   .config(function($stateProvider) {
     $stateProvider
       .state('editEvent', {
-        url: '/edit-event',
+        url: '/edit-event/:keyEvent',
         component: 'editEvent',
         data: {
           requiredAuth: true

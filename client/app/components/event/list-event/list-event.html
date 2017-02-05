@@ -1,5 +1,5 @@
 <ul>
   <li ng-repeat="event in $ctrl.list">
-    {{event.name}}: {{event.description}}
+    {{event.name}}: {{event.description}} <button ng-click="$ctrl.edit(event)"> editar </button>
   </li>
 </ul>

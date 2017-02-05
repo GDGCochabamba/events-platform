@@ -1,8 +1,10 @@
-function EventService($log, $firebaseArray, $q) {
+function EventService($log, $firebaseArray, $firebaseObject, $q) {
   var ref = firebase.database().ref().child('events'),
-      list = $firebaseArray(ref);
+      list = $firebaseArray(ref),
+      obj,
       service = {
           add: add,
+          getByKey: getByKey,
           list: getList
       };
 
@@ -13,6 +15,19 @@ function EventService($log, $firebaseArray, $q) {
         var deferred = $q.defer();
         list.$add(event).then(function(ref) {
             deferred.resolve(ref);
+        }, function(error){
+            deferred.reject(error);
+        });
+
+        return deferred.promise;
+      }
+      
+      function getByKey(key) {
+        var deferred = $q.defer();
+
+        obj = $firebaseObject(ref.child(key));
+        obj.$loaded().then(function(response) {
+            deferred.resolve(response);
         }, function(error){
             deferred.reject(error);
         });
@@ -57,6 +72,7 @@ function EventService($log, $firebaseArray, $q) {
             }
         ];
     }
+
 }
 
 angular
