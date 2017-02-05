@@ -2,7 +2,8 @@ angular
   .module('components', [
     'components.auth',
     'components.events',
-    'components.attendees'
+    'components.attendees',
+    'components.event'
   ]);
 
 require('./auth/auth.module');
