@@ -1,4 +1,4 @@
-function AttendeesListController(AttendeesService) {
+function AttendeesListController(AttendeesService, $stateParams) {
   var ctrl = this;
   ctrl.getList = AttendeesService.getList();
 }

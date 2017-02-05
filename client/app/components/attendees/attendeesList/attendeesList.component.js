@@ -9,7 +9,7 @@ angular
   .config(function($stateProvider) {
     $stateProvider
       .state('attendeesList', {
-        url: '/events/attendees',
+        url: '/events/:id',
         component: 'attendeesList'
       });
   });
