@@ -3,15 +3,15 @@ var app = {
   controller: function(AuthService, $state) {
 
     this.addEvent = addEvent;
-    this.addUser = addUser;
+    this.addProfile = addProfile;
     this.logout = logout;
 
     function addEvent() {
       $state.go('addEvent');
     }
 
-    function addUser() {
-      $state.go('addUser');
+    function addProfile() {
+      $state.go('addProfile');
     }
     
     function logout() {

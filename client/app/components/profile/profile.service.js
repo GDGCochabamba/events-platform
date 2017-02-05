@@ -1,5 +1,5 @@
-function UserService($log, $firebaseArray, $q) {
-  var ref = firebase.database().ref().child('users'),
+function ProfileService($log, $firebaseArray, $q) {
+  var ref = firebase.database().ref().child('profiles'),
       list = $firebaseArray(ref);
       service = {
           add: add
@@ -7,10 +7,10 @@ function UserService($log, $firebaseArray, $q) {
 
       return service;
 
-      function add(user) {
-        $log.info('[UserService]', 'add user', user);
+      function add(profile) {
+        $log.info('[ProfielService]', 'add profile', profile);
         var deferred = $q.defer();
-        list.$add(user).then(function(ref) {
+        list.$add(profile).then(function(ref) {
             deferred.resolve(ref);
         }, function(error){
             deferred.reject(error);
@@ -22,4 +22,4 @@ function UserService($log, $firebaseArray, $q) {
 
 angular
   .module('components.auth')
-  .factory('UserService', UserService);
+  .factory('ProfileService', ProfileService);

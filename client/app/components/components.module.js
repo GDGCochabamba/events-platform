@@ -3,11 +3,11 @@ angular
     'components.auth',
     'components.event',
     'components.attendees',
-    'components.user'
+    'components.profile'
   ]);
 
 require('./auth/auth.module');
 require('./attendees/attendees.module');
 require('./event/event.module');
-require('./user/user.module');
+require('./profile/profile.module');
 
