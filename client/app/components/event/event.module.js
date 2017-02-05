@@ -4,3 +4,4 @@ angular.module('components.event', [
 
 require('./event.service');
 require('./add-event/add-event.component');
+require('./list-event/list-event.component');

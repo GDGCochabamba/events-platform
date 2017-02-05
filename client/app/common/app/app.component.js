@@ -34,6 +34,7 @@ angular
         component: 'app',
         data: {
           requiredAuth: true
-        }
+        },
+        redirectTo: 'eventList',
       });
   });
