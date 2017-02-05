@@ -6,6 +6,9 @@ function EventListController($log, $state, EventService) {
 
   function edit(event) {
     $log.info('Going to edit event', event);
+    $state.go('editEvent', {
+      keyEvent: event.$id
+    });
   }
 
   function onInit() {
