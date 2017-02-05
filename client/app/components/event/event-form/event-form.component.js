@@ -1,7 +1,7 @@
 var eventForm = {
   bindings: {
-      event: '=',
-      action: '@',
+      event: '<',
+      submitText: '@',
       onAction: '&'
   },
   templateUrl: 'event-form.html',

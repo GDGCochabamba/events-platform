@@ -5,7 +5,7 @@ function EventFormController($log, EventService) {
   ctrl.doAction = doAction;
 
   function onInit() {
-    ctrl.submitText = ctrl.action? ctrl.action: 'Submit';
+
   }
 
   function doAction() {
