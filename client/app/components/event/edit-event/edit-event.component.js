@@ -10,8 +10,8 @@ angular
   .component('editEvent', editEvent)
   .config(function($stateProvider) {
     $stateProvider
-      .state('editEvent', {
-        url: '/edit-event/:keyEvent',
+      .state('event.editEvent', {
+        url: '^/edit-event/:keyEvent',
         component: 'editEvent',
         data: {
           requiredAuth: true
