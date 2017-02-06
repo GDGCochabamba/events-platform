@@ -7,6 +7,7 @@ function EventService($log, $firebaseArray, $firebaseObject, $q) {
           add: add,
           getByKey: getByKey,
           list: getList,
+          update: update,
           addAttendeeToEvent: addAttendeeToEvent
       };
 
@@ -37,6 +38,17 @@ function EventService($log, $firebaseArray, $firebaseObject, $q) {
         return deferred.promise;
       }
 
+      function update(event) {
+        var deferred = $q.defer();
+
+        event.$save().then(function(ref){
+          deferred.resolve(ref);
+        }, function(error){
+          deferred.reject(error);
+        });
+
+        return deferred.promise;
+      }
 
       function getList() {
         return $firebaseArray(refEventList);

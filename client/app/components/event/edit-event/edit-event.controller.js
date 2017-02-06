@@ -1,11 +1,15 @@
-function EditEventController($log, $stateParams, EventService) {
+function EditEventController($log, $state, $stateParams, EventService) {
   var ctrl = this;
 
   ctrl.$onInit  = onInit;
   ctrl.edit = edit;
 
   function edit() {
-      $log.info('Going to edit event');
+      $log.info('Going to edit event', ctrl.event);
+      EventService.update(ctrl.event).then(function(ref){
+        $log.info('[EditEventController]', 'Update process was successful');
+        $state.go('eventList');
+      });
   }
 
   function onInit() {
