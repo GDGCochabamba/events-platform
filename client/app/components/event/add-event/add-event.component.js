@@ -10,8 +10,8 @@ angular
   .component('addEvent', addEvent)
   .config(function($stateProvider) {
     $stateProvider
-      .state('addEvent', {
-        url: '/add-event',
+      .state('event.addEvent', {
+        url: '^/add-event',
         component: 'addEvent',
         data: {
           requiredAuth: true
