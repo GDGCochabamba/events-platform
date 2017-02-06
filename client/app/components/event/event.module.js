@@ -3,5 +3,7 @@ angular.module('components.event', [
 ]);
 
 require('./event.service');
-require('./add-event/add-event.component');
 require('./list-event/list-event.component');
+require('./add-event/add-event.component');
+require('./edit-event/edit-event.component');
+require('./event-form/event-form.component');

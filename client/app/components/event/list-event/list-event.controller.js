@@ -1,7 +1,15 @@
-function EventListController(EventService, $state) {
+function EventListController($log, $state, EventService) {
   var ctrl = this;
-  ctrl.$onInit = onInit;
+  ctrl.$onInit  = onInit;
+  ctrl.edit = edit;
   ctrl.viewEvent = viewEvent;
+
+  function edit(event) {
+    $log.info('Going to edit event', event);
+    $state.go('editEvent', {
+      keyEvent: event.$id
+    });
+  }
 
   function onInit() {
     ctrl.list = EventService.list();
