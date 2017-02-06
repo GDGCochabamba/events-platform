@@ -1,6 +1,6 @@
-function EventListController(EventService, $state) {
+function EventListController($log, $state, EventService) {
   var ctrl = this;
-  ctrl.$onInit = onInit;
+  ctrl.$onInit  = onInit;
   ctrl.viewEvent = viewEvent;
 
   function onInit() {
