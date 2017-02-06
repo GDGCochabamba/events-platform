@@ -8,7 +8,7 @@ function EditEventController($log, $state, $stateParams, EventService) {
       $log.info('Going to edit event', ctrl.event);
       EventService.update(ctrl.event).then(function(ref){
         $log.info('[EditEventController]', 'Update process was successful');
-        $state.go('eventList');
+        $state.go('event.eventList');
       });
   }
 

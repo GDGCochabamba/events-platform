@@ -1,5 +1,5 @@
 var event = {
-  template: '<div ui-view></div>'
+  templateUrl: 'event.html'
 }
 
 angular
