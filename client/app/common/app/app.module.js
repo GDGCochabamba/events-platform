@@ -4,3 +4,4 @@ angular
   ]);
 
 require('./app.component');
+require('./app-nav/app-nav.component');

@@ -8,8 +8,8 @@ angular
   .component('eventList', eventList)
   .config(function($stateProvider) {
     $stateProvider
-      .state('eventList', {
-        url: '/events',
+      .state('event.eventList', {
+        url: '^/events',
         component: 'eventList'
       });
   });
