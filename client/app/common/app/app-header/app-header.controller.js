@@ -1,4 +1,4 @@
-function AppNavController(AuthService, $state) {
+function AppHeaderController(AuthService, $state) {
   this.logout = logout;
 
   function logout() {
@@ -12,4 +12,4 @@ function AppNavController(AuthService, $state) {
 
 angular
   .module('common.app')
-  .controller('AppNavController', AppNavController);
+  .controller('AppHeaderController', AppHeaderController);

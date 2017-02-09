@@ -1,8 +1,9 @@
 angular
   .module('eventsPlatform', [
+    'ngMaterial',
     'ui.router',
     'firebase',
-    'templates',
+    'templates',    
     'common',
     'components'
   ]);
