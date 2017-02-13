@@ -91,7 +91,7 @@ gulp.task('serve', [ 'build-styles', 'build-scripts' ], function() {
   
   runServer();
 
-  gulp.watch(config.projectDirectory + '/**/*.html', ['templates', reload]);
+  gulp.watch(config.projectDirectory + '/**/*.html', ['build-scripts', reload]);
   gulp.watch(config.projectDirectory + '/**/*.{styl,css}', ['build-styles', reload]);
   gulp.watch(config.projectDirectory + '/**/*.js', ['build-scripts',reload]);
   gulp.watch(config.projectDirectory + '/**/*.{jpg,jpeg,png,gif}', reload);

@@ -1,7 +1,10 @@
-<ul>
-  <li>
-    <a ui-sref="event.addEvent">Nuevo evento</a>
-  </li>
-</ul>
+<md-nav-bar md-selected-nav-item="currentNavItem">
+  <md-nav-item md-nav-sref="event">Lista de eventos</md-nav-item>
+  <md-nav-item md-nav-sref="event.addEvent">Nuevo evento</md-nav-item>
+</md-nav-bar>
 
-<div ui-view ></div>
+<md-card>
+  <md-card-content>
+    <div ui-view ></div>
+  </md-card-content>
+</md-card>
