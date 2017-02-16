@@ -2,6 +2,16 @@ Crear perfil de usurio
 
 <form name="addForm" method="post" novalidate ng-submit="$ctrl.add()">    
     <div>
+        <label for="name">Correo</label>
+        <input type="text" name="email" data-ng-model="$ctrl.user.email" required>
+    </div>
+
+    <div>
+        <label for="name">Contrasena</label>
+        <input type="text" name="password" data-ng-model="$ctrl.user.password" required>
+    </div>
+
+    <div>
         <label for="name">Nombre</label>
         <input type="text" name="firstName" data-ng-model="$ctrl.profile.firstName" required>
     </div>
