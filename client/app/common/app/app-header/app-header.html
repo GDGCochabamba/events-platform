@@ -1,0 +1,18 @@
+<div class="app__header" >
+<md-toolbar md-whiteframe="4">
+  <div class="md-toolbar-tools">
+    <h2>Events Platform</h2>
+    <md-menu>
+      <md-button ng-mouseenter="$mdMenu.open()" class="md-icon-button" aria-label="More">
+        <md-icon md-font-set="material-icons">more_vert</md-icon>
+      </md-button>
+      <md-menu-content ng-mouseleave="$mdMenu.close()">
+        <md-menu-item>          
+          <md-button
+            ng-click="$ctrl.logout();">Logout</md-button>            
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+  </div>
+</md-toolbar>
+</div>
