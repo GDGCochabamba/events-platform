@@ -1,4 +1,4 @@
-function AddProfileController($log, ProfileService) {
+function AddProfileController($log, $state, $stateParams, ProfileService) {
   var ctrl = this;
 
   ctrl.$onInit  = onInit;
@@ -8,6 +8,9 @@ function AddProfileController($log, ProfileService) {
     ProfileService.add(ctrl.profile, ctrl.user).then(function(ref){
       var id = ref.key;
       $log.info('[AddProfileController]', 'added record with id:', id);
+      $state.go('viewProfile', {
+        keyProfile: id
+      });
     });
   }
   
