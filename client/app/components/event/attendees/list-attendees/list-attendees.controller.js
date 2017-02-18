@@ -3,16 +3,16 @@ function AttendeesListController(EventService, $stateParams) {
   ctrl.attendees = [];
   ctrl.$onInit = onInit;
   ctrl.getList = getList;
-
   function getList() {
-    var attendees = EventService.getEventAttendees($stateParams.id).then(function (attendees) {
-      ctrl.attendees = attendees;
+    var attendees = EventService.getEventAttendees(ctrl.key).then(function (attendeeProfiles) {
+      ctrl.profiles = attendeeProfiles;
     }, function (error) {
       console.log(error);
     });
   }
 
   function onInit() {
+    console.log(ctrl.key);
     ctrl.getList();
   }
 }

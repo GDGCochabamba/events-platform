@@ -3,6 +3,7 @@ function EventService($log, $firebaseArray, $firebaseObject, $q) {
       refEventAttendees = firebase.database().ref().child('eventAttendees'),
       list = $firebaseArray(refEventList),
       obj,
+      profilesRef = firebase.database().ref().child('profiles')
       service = {
           add: add,
           getByKey: getByKey,
@@ -57,10 +58,16 @@ function EventService($log, $firebaseArray, $firebaseObject, $q) {
   }
 
   function getEventAttendees(eventUID) {
+    var profiles = [];
+    refEventAttendees.child(eventUID).on('child_added', function(attendee){
+        var profileRef = profilesRef.child(attendee.key);
+        var profileFirebaseObject = $firebaseObject(profileRef);
+           profiles.push(profileFirebaseObject);
+    });
     var eventAttendees = $firebaseObject(refEventAttendees.child(eventUID));
     var deferred = $q.defer();
     eventAttendees.$loaded().then(function (attendees) {
-      deferred.resolve(attendees);
+      deferred.resolve(profiles);
     }, function (error) {
       deferred.reject(error);
     });

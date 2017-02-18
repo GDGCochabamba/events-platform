@@ -1,17 +1,14 @@
 var attendeesList = {
   templateUrl: 'list-attendees.html',
-  controller: 'AttendeesListController'
+  controller: 'AttendeesListController',
+  bindings: {
+    key: '='
+  }
 };
 
 angular
   .module('components.event')
   .component('attendeesList', attendeesList)
-  .config(function($stateProvider) {
-    $stateProvider
-      .state('attendeesList', {
-        url: '/events/:id',
-        component: 'attendeesList'
-      });
-  });
+  ;
 
 require('./list-attendees.controller');

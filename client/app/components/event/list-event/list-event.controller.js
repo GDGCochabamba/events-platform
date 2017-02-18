@@ -8,7 +8,7 @@ function EventListController($log, $state, EventService) {
   }
 
   function viewEvent(event) {
-    $state.go('attendeesList', {
+    $state.href('attendeesList', {
       id: event.$id
     });
   }
