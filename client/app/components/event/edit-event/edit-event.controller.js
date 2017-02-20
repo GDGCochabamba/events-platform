@@ -13,9 +13,9 @@ function EditEventController($log, $state, $stateParams, EventService) {
   }
 
   function onInit() {
-      var key = $stateParams.keyEvent;
+      ctrl.key = $stateParams.keyEvent;
 
-      EventService.getByKey(key).then(function(event){
+      EventService.getByKey(ctrl.key).then(function(event){
         $log.info('[EditEventController]', 'event on init: ', event);
         ctrl.event = event;
       });
