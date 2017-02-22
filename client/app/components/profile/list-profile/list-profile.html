@@ -1,0 +1,6 @@
+<ul>
+  <li ng-repeat="profile in $ctrl.list">
+    {{profile.firstName}} {{profile.lastName}}: 
+    <a ui-sref="profile.viewProfile({ keyProfile: profile.$id })">view</a>
+  </li>
+</ul>

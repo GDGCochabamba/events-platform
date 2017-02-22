@@ -5,7 +5,8 @@ function ProfileService($log, $firebaseArray, $firebaseObject, $firebaseAuth, $q
       service = {
           add: add,
           createProfile: createProfile,
-          getByKey: getByKey
+          getByKey: getByKey,
+          list: getList
       };
 
       return service;
@@ -40,6 +41,10 @@ function ProfileService($log, $firebaseArray, $firebaseObject, $firebaseAuth, $q
         });
 
         return deferred.promise;
+      }
+
+      function getList() {
+        return $firebaseArray(ref);
       }
 
       function createProfile(user, authData){        
