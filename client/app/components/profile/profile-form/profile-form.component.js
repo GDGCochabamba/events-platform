@@ -1,6 +1,6 @@
 var profileForm = {
 	bindings: {
-	    progfile: '<',
+	    profile: '<',
 	    submitText: '@',
 	    onAction: '&'
 	},

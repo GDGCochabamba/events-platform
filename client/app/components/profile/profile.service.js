@@ -11,9 +11,9 @@ function ProfileService($log, $firebaseArray, $firebaseObject, $firebaseAuth, $q
 
       return service;
 
-      function add(profile, user) {
+      function add(profile) {
         var deferred = $q.defer();
-        var user = $firebaseAuth().$createUserWithEmailAndPassword(user.email, user.password).then(function (authData) {
+        var user = $firebaseAuth().$createUserWithEmailAndPassword(profile.email, profile.password).then(function (authData) {
             console.log(authData.uid); //should log new uid.
             var fprofile = $firebaseObject(ref.child(authData.uid));
             fprofile.firstName = profile.firstName;
