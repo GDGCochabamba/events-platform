@@ -11,3 +11,4 @@ require('./attendees/list-attendees/list-attendees.component');
 require('./add-event/add-event.component');
 require('./edit-event/edit-event.component');
 require('./event-form/event-form.component');
+require('./event-item/event-item.component');
