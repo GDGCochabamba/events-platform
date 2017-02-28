@@ -3,6 +3,7 @@ function AttendeesListController(EventService, $stateParams) {
   ctrl.attendees = [];
   ctrl.$onInit = onInit;
   ctrl.getList = getList;
+  ctrl.confirmInscription = confirmInscription;
   function getList() {
     var attendees = EventService.getEventAttendees(ctrl.key).then(function (attendeeProfiles) {
       ctrl.profiles = attendeeProfiles;
@@ -12,8 +13,16 @@ function AttendeesListController(EventService, $stateParams) {
   }
 
   function onInit() {
-    console.log(ctrl.key);
     ctrl.getList();
+  }
+
+  function confirmInscription(attendeeKey) {
+    EventService.confirmInscription(ctrl.key, attendeeKey).then(function(){
+      alert('Inscription Confirmed');
+    }).catch(function(error){
+      console.log(error);
+      ctrl.getList();
+    })
   }
 }
 
