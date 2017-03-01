@@ -1,3 +1,21 @@
 @import 'common'
 @import 'components'
 @import 'pages'
+
+color-text = rgba(255, 255, 255, 0.5);
+// md-card md-card-content, md-content.md-altTheme-theme
+//     background-image radial-gradient(circle at 50% 100%, #02afe2, #0177c1)
+md-card, md-content.md-altTheme-theme
+    background-image radial-gradient(circle at 50% 100%, #02afe2, #0177c1)
+// inputs
+md-input-container.md-altTheme-theme .md-input
+    color white
+//iconos
+md-input-container.md-altTheme-theme>md-icon
+    color white
+//labels
+md-input-container.md-altTheme-theme:not(.md-input-invalid).md-input-has-value label
+    color color-text
+
+placeholder
+    color white
