@@ -1,0 +1,16 @@
+<div>
+	<h2>{{$ctrl.titleField}}</h2>
+	<div>
+		<ul>
+			<li ng-repeat="item in $ctrl.event[$ctrl.fieldName]">
+				<input type="text" ng-model="item.name">
+				<button type="button" ng-click="$ctrl.remove($index)"> - </button>
+			</li>
+			<li>
+				<input type="text" ng-model="$ctrl.newItem">
+				<button type="button" ng-click="$ctrl.add()"> + </button>
+			</li>
+		</ul>		
+	</div>
+	<button ng-click="$ctrl.save()">Save</button>
+</div>

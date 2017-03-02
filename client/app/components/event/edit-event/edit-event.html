@@ -2,5 +2,9 @@
             submit-text="Edit Event"
             on-action="$ctrl.edit()">
 </event-form>
+<event-item event="$ctrl.event" field-name="sponsors" title-field="Sponsors"></event-item>
+<event-item event="$ctrl.event" field-name="social_media" title-field="Social Media"></event-item>
+<event-item event="$ctrl.event" field-name="schedule" title-field="Schedule"></event-item>
+<event-item event="$ctrl.event" field-name="speakers" title-field="Speakers"></event-item>
 <h2>Asistentes</h2>
 <attendees-list key="$ctrl.key" ></attendees-list>
