@@ -1,0 +1,45 @@
+<form name="profileForm" method="post" novalidate ng-submit="$ctrl.doAction();">
+    <div>
+        <label class="label" for="name">Correo</label>
+        <input class="input-text" type="text" name="email" data-ng-model="$ctrl.profile.email" required>
+    </div>
+
+    <div>
+        <label class="label" for="name">Contrasena</label>
+        <input class="input-text" type="text" name="password" data-ng-model="$ctrl.profile.password" required>
+    </div>
+
+    <div>
+        <label class="label" for="firstName">Nombre</label>
+        <input class="input-text" type="text" name="firstName" data-ng-model="$ctrl.profile.firstName" required>
+    </div>
+
+    <div>
+        <label class="label" for="lastName">Apellido</label>
+        <input class="input-text" type="text" name="lastName" data-ng-model="$ctrl.profile.lastName">
+    </div>
+
+    <div>
+        <label class="label" for="birthDate">Fecha de nacimiento</label>
+        <input type="text" name="birthDate" data-ng-model="$ctrl.profile.birthDate">
+    </div>
+
+    <div>
+        <label class="label" for="phone">Telefono</label>
+        <input class="input-text" type="text" name="phone" data-ng-model="$ctrl.profile.phone">
+    </div>
+
+    <div>
+        <label class="label" for="gender">Genero</label>
+        <input class="input-text" type="text" name="gender" data-ng-model="$ctrl.profile.gender">
+    </div>
+
+    <div>
+        <md-button class="submit" 
+        type="submit"
+        ng-disabled="profileForm.$invalid"
+        ng-click="acceptOffer();"> 
+            {{$ctrl.submitText}}
+        </md-button>
+    </div>
+</form>

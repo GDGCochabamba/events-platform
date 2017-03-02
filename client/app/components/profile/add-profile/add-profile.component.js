@@ -10,8 +10,8 @@ angular
   .component('addProfile', addProfile)
   .config(function($stateProvider) {
     $stateProvider
-      .state('addProfile', {
-        url: '/add-profile',
+      .state('profile.addProfile', {
+        url: '^/add-profile',
         component: 'addProfile',
         data: {
           requiredAuth: true

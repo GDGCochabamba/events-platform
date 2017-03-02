@@ -5,14 +5,15 @@ function ProfileService($log, $firebaseArray, $firebaseObject, $firebaseAuth, $q
       service = {
           add: add,
           createProfile: createProfile,
-          getByKey: getByKey
+          getByKey: getByKey,
+          list: getList
       };
 
       return service;
 
-      function add(profile, user) {
+      function add(profile) {
         var deferred = $q.defer();
-        var user = $firebaseAuth().$createUserWithEmailAndPassword(user.email, user.password).then(function (authData) {
+        var user = $firebaseAuth().$createUserWithEmailAndPassword(profile.email, profile.password).then(function (authData) {
             console.log(authData.uid); //should log new uid.
             var fprofile = $firebaseObject(ref.child(authData.uid));
             fprofile.firstName = profile.firstName;
@@ -40,6 +41,10 @@ function ProfileService($log, $firebaseArray, $firebaseObject, $firebaseAuth, $q
         });
 
         return deferred.promise;
+      }
+
+      function getList() {
+        return $firebaseArray(ref);
       }
 
       function createProfile(user, authData){        
