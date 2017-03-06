@@ -1,4 +1,4 @@
-function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService) {
+function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, ProfileService) {
   var refEventList = firebase.database().ref().child('events'),
     refEventAttendees = firebase.database().ref().child('eventAttendees'),
     list = $firebaseArray(refEventList),
@@ -111,8 +111,12 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService) {
   function confirmInscription(uidEvent, uidAttendee) {
     var attendee = $firebaseObject(refEventAttendees.child(uidEvent).child(uidAttendee));
     attendee.status = 'confirmed';
-    attendee.confirmed_by = AuthService.getUserData().uid;
+    attendee.confirmed_by = AuthService, ProfileService.getUserData().uid;
     return attendee.$save();
+  }
+
+  function getAllProfiles() {
+    return ProfileService.getList();
   }
 }
 
