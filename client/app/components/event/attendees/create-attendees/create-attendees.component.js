@@ -12,7 +12,7 @@ angular
     $stateProvider
       .state('event.createAttendees', {
         url: '^/create-attendees/:keyEvent',
-        component: 'event.createAttendees',
+        component: 'createAttendees',
         data: {
           requiredAuth: true
         }

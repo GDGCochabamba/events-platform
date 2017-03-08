@@ -5,16 +5,14 @@ function CreateAttendeesController($log, $state, $stateParams, EventService) {
   
   function onInit() {
     console.log('init controller createAttendees');
-      ctrl.key = $stateParams.keyEvent;
-      ctrl.getProfiles();
-  }
-  
-  function getProfiles() {
+    ctrl.key = $stateParams.keyEvent;      
     ctrl.profiles = EventService.getAllProfiles();
+    console.log('ctrl.profiles');
+    console.log(ctrl.profiles);
   }
   
-  function createAttendees() {
-
+  function createAttendees(profile) {
+    EventService.addAttendeeToEvent(ctrl.key, profile.$id);
   }
 
 

@@ -12,7 +12,8 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, Pr
     update: update,
     getEventAttendees: getEventAttendees,
     addAttendeeToEvent: addAttendeeToEvent,
-    confirmInscription: confirmInscription
+    confirmInscription: confirmInscription,
+    getAllProfiles: getAllProfiles
   };
 
   return service;
@@ -116,7 +117,10 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, Pr
   }
 
   function getAllProfiles() {
-    return ProfileService.getList();
+    var profiles = ProfileService.list();
+    console.log('profiles');
+    console.log(profiles);
+    return profiles;
   }
 }
 
