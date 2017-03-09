@@ -8,12 +8,11 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, Pr
     add: add,
     getByKey: getByKey,
     list: getList,
-    addAttendeeToEvent: addAttendeeToEvent,
     update: update,
     getEventAttendees: getEventAttendees,
     addAttendeeToEvent: addAttendeeToEvent,
     confirmInscription: confirmInscription,
-    getAllProfiles: getAllProfiles
+    getProfilesForEvent: getProfilesForEvent
   };
 
   return service;
@@ -100,6 +99,7 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, Pr
    * @return {void}
    */
   function addAttendeeToEvent(uidEvent, uidAttendee) {
+    var deferred = $q.defer();
     // Create a firebase object using the reference eventAttendees collection and Event UID.
     var attende = $firebaseObject(refEventAttendees.child(uidEvent));
     // Add attendee to the attende object
@@ -107,6 +107,8 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, Pr
     attende[uidAttendee] = {status: 'pending'};
     // Save attendee informartion
     attende.$save();
+    deferred.resolve('Success');
+    return deferred.promise;
   }
 
   function confirmInscription(uidEvent, uidAttendee) {
@@ -116,11 +118,25 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, Pr
     return attendee.$save();
   }
 
-  function getAllProfiles() {
-    var profiles = ProfileService.list();
-    console.log('profiles');
-    console.log(profiles);
-    return profiles;
+  function getProfilesForEvent(eventUID) {
+    var profileInscriptionInfo = {};
+    var eventAttendeesRef = refEventAttendees.child(eventUID);
+    var profilesFArray = $firebaseArray(profilesRef);
+    var deferred = $q.defer();
+    profilesFArray.$loaded().then(function (profiles) {
+      profiles.forEach(function (profile, key) {
+        if (!profileInscriptionInfo[profile.$id]) {
+          profileInscriptionInfo[profile.$id] = {};
+        }
+        profileInscriptionInfo[profile.$id]['profile'] = profile;
+        profileInscriptionInfo[profile.$id]['inscription'] = $firebaseObject(eventAttendeesRef.child(profile.$id));
+      });
+      deferred.resolve(profileInscriptionInfo);
+    }, function (error) {
+      deferred.reject(error);
+    });
+    return deferred.promise;
+    //return ProfileService.list();
   }
 }
 

@@ -1,21 +1,28 @@
 function CreateAttendeesController($log, $state, $stateParams, EventService) {
   var ctrl = this;
 
-  ctrl.$onInit  = onInit;  
-  
+  ctrl.$onInit = onInit;
+  ctrl.addToEvent = addToEvent;
+
   function onInit() {
-    console.log('init controller createAttendees');
-    ctrl.key = $stateParams.keyEvent;      
-    ctrl.profiles = EventService.getAllProfiles();
-    console.log('ctrl.profiles');
-    console.log(ctrl.profiles);
-  }
-  
-  function createAttendees(profile) {
-    EventService.addAttendeeToEvent(ctrl.key, profile.$id);
+    ctrl.key = $stateParams.keyEvent;
+    EventService.getProfilesForEvent(ctrl.key)
+      .then(function (profileInscriptionInfo) {
+        ctrl.profiles = profileInscriptionInfo
+      }).catch(function (error) {
+        console.log(error);
+      });
   }
 
-
+  function addToEvent(profileKey) {
+    console.log(profileKey);
+    EventService.addAttendeeToEvent(ctrl.key, profileKey)
+      .then(function (result) {
+        console.log(result);
+      }).catch(function (error) {
+        console.log(error);
+      });
+  }
 }
 
 angular

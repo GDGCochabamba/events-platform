@@ -1,1 +1,15 @@
 <h2>lista de perfiles</h2>
+<table style="width: 100%">
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Estado de Inscripcion</th>
+    <th></th>
+  </tr>
+  <tr ng-repeat="(key, profile) in $ctrl.profiles">
+     <td>{{profile.profile.firstName}}</td>
+     <td>{{profile.profile.lastName}} </td>
+     <td>{{profile.inscription.status}} </td>
+     <td><button ng-click="$ctrl.addToEvent(key)" ng-if="!profile.inscription.status">Inscribir</button></td>
+  </tr>
+</ul>
