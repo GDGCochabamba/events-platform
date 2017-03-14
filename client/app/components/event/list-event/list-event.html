@@ -1,6 +1,7 @@
 <ul>
   <li ng-repeat="event in $ctrl.list">
-    {{event.name}}: {{event.description}}
+    {{event.name}}: {{event.description}} 
     <a ui-sref="event.editEvent({ keyEvent: event.$id })">edit</a>
+    <a ui-sref="event.createAttendees({ keyEvent: event.$id })">Agregar asistentes</a>
   </li>
 </ul>

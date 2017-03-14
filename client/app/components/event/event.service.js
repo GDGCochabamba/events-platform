@@ -1,4 +1,4 @@
-function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService) {
+function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, ProfileService) {
   var refEventList = firebase.database().ref().child('events'),
     refEventAttendees = firebase.database().ref().child('eventAttendees'),
     list = $firebaseArray(refEventList),
@@ -8,11 +8,11 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService) {
     add: add,
     getByKey: getByKey,
     list: getList,
-    addAttendeeToEvent: addAttendeeToEvent,
     update: update,
     getEventAttendees: getEventAttendees,
     addAttendeeToEvent: addAttendeeToEvent,
-    confirmInscription: confirmInscription
+    confirmInscription: confirmInscription,
+    getProfilesForEvent: getProfilesForEvent
   };
 
   return service;
@@ -71,7 +71,7 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService) {
     var eventAttendees = $firebaseArray(refEventAttendees.child(eventUID));
     var deferred = $q.defer();
     eventAttendees.$loaded().then(function (attendees) {
-      
+
       attendees.forEach(function (attendee, key) {
         if (!attendeesInscriptions[attendee.$id]) {
           attendeesInscriptions[attendee.$id] = {};
@@ -99,20 +99,46 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService) {
    * @return {void}
    */
   function addAttendeeToEvent(uidEvent, uidAttendee) {
-    // Create a firebase object using the reference eventAttendees collection and Event UID.
+    var deferred = $q.defer();
     var attende = $firebaseObject(refEventAttendees.child(uidEvent));
-    // Add attendee to the attende object
-    // We could use here something like this: attende[uidAttendee] = { resources: 1, assisted: 1 }
-    attende[uidAttendee] = {status: 'pending'};
-    // Save attendee informartion
-    attende.$save();
+    attende.$loaded(function () {
+      attende[uidAttendee] = {
+        status: 'pending'
+      };
+      attende.$save();
+      deferred.resolve('Success');
+    }).catch(function (error) {
+      deferred.reject(error);
+    });
+    return deferred.promise;
   }
 
   function confirmInscription(uidEvent, uidAttendee) {
     var attendee = $firebaseObject(refEventAttendees.child(uidEvent).child(uidAttendee));
     attendee.status = 'confirmed';
-    attendee.confirmed_by = AuthService.getUserData().uid;
+    attendee.confirmed_by = AuthService, ProfileService.getUserData().uid;
     return attendee.$save();
+  }
+
+  function getProfilesForEvent(eventUID) {
+    var profileInscriptionInfo = {};
+    var eventAttendeesRef = refEventAttendees.child(eventUID);
+    var profilesFArray = $firebaseArray(profilesRef);
+    var deferred = $q.defer();
+    profilesFArray.$loaded().then(function (profiles) {
+      profiles.forEach(function (profile, key) {
+        if (!profileInscriptionInfo[profile.$id]) {
+          profileInscriptionInfo[profile.$id] = {};
+        }
+        profileInscriptionInfo[profile.$id]['profile'] = profile;
+        profileInscriptionInfo[profile.$id]['inscription'] = $firebaseObject(eventAttendeesRef.child(profile.$id));
+      });
+      deferred.resolve(profileInscriptionInfo);
+    }, function (error) {
+      deferred.reject(error);
+    });
+    return deferred.promise;
+    //return ProfileService.list();
   }
 }
 
