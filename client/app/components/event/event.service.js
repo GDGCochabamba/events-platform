@@ -71,7 +71,7 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, Pr
     var eventAttendees = $firebaseArray(refEventAttendees.child(eventUID));
     var deferred = $q.defer();
     eventAttendees.$loaded().then(function (attendees) {
-      
+
       attendees.forEach(function (attendee, key) {
         if (!attendeesInscriptions[attendee.$id]) {
           attendeesInscriptions[attendee.$id] = {};
@@ -100,14 +100,16 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, Pr
    */
   function addAttendeeToEvent(uidEvent, uidAttendee) {
     var deferred = $q.defer();
-    // Create a firebase object using the reference eventAttendees collection and Event UID.
     var attende = $firebaseObject(refEventAttendees.child(uidEvent));
-    // Add attendee to the attende object
-    // We could use here something like this: attende[uidAttendee] = { resources: 1, assisted: 1 }
-    attende[uidAttendee] = {status: 'pending'};
-    // Save attendee informartion
-    attende.$save();
-    deferred.resolve('Success');
+    attende.$loaded(function () {
+      attende[uidAttendee] = {
+        status: 'pending'
+      };
+      attende.$save();
+      deferred.resolve('Success');
+    }).catch(function (error) {
+      deferred.reject(error);
+    });
     return deferred.promise;
   }
 
