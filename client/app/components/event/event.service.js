@@ -116,7 +116,7 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, Pr
   function confirmInscription(uidEvent, uidAttendee) {
     var attendee = $firebaseObject(refEventAttendees.child(uidEvent).child(uidAttendee));
     attendee.status = 'confirmed';
-    attendee.confirmed_by = AuthService, ProfileService.getUserData().uid;
+    attendee.confirmed_by = AuthService.getUserData().uid;
     return attendee.$save();
   }
 

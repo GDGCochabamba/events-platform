@@ -1,14 +1,18 @@
-<h2>lista de perfiles</h2>
+<h2>Agregar asistentes</h2>
 <table style="width: 100%">
   <tr>
+    <th>Id</th>
     <th>Nombre</th>
     <th>Apellido</th>
+    <th>Email</th>
     <th>Estado de Inscripcion</th>
     <th></th>
   </tr>
-  <tr ng-repeat="(key, profile) in $ctrl.profiles">
+  <tr ng-repeat="(key, profile) in $ctrl.profiles" ng-if="!profile.inscription.status">
+     <td align="center">{{key}}</td>
      <td align="center">{{profile.profile.firstName}}</td>
      <td align="center">{{profile.profile.lastName}} </td>
+     <td align="center">{{profile.profile.email}} </td>
      <td align="center">{{profile.inscription.status}} </td>
      <td><button ng-click="$ctrl.addToEvent(key)" ng-if="!profile.inscription.status">Inscribir</button></td>
   </tr>

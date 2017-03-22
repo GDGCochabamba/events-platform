@@ -21,6 +21,7 @@ function ProfileService($log, $firebaseArray, $firebaseObject, $firebaseAuth, $q
             fprofile.birthDate = profile.birthDate;
             fprofile.phone = profile.phone;
             fprofile.gender = profile.gender;
+            fprofile.email = profile.email;
             fprofile.$save().then(function (result) {
                 deferred.resolve(result);
             }).catch(function (err) {

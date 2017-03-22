@@ -1,18 +1,19 @@
-<table style="width: 100%">
-  <tr>
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Email</th>
-    <th>Estado de Inscripcion</th>
-    <th>Confirmado por</th>
-    <th></th>
-  </tr>
-  <tr ng-repeat="(key, inscription) in $ctrl.profiles">
-     <td>{{inscription.profile.firstName}}</td>
-     <td>{{inscription.profile.lastName}} </td>
-     <td>{{inscription.profile.email}} </td>
-     <td>{{inscription.attendee.status}} </td>
-     <td>{{inscription.confirmed_by.firstName}} </td>
-     <td><button ng-click="$ctrl.confirmInscription(key)" ng-if="inscription.attendee.status !== 'confirmed'">Confirmar</button></td>
-  </tr>
-</ul>
+  <table style="width: 100%">
+    <tr>
+      <th align="center">Nombre</th>
+      <th align="center">Apellido</th>
+      <th align="center">Email</th>
+      <th align="center">Estado de Inscripcion</th>
+      <th align="center">Confirmado por</th>
+      <th align="center"></th>
+    </tr>
+    <tr ng-repeat="(key, inscription) in $ctrl.profiles">
+      <td align="center">{{inscription.profile.firstName}}</td>
+      <td align="center">{{inscription.profile.lastName}} </td>
+      <td align="center">{{inscription.profile.email}} </td>
+      <td align="center">{{inscription.attendee.status}} </td>
+      <td align="center" >{{inscription.confirmed_by.firstName}} </td>
+      <td align="center"><button ng-click="$ctrl.confirmInscription(key)" ng-if="inscription.attendee.status !== 'confirmed'">Confirmar</button></td>
+    </tr>
+    </ul>
+  </table>
