@@ -1,7 +1,11 @@
-<ul>
-  <li ng-repeat="event in $ctrl.list">
-    {{event.name}}: {{event.description}} 
-    <a ui-sref="event.editEvent({ keyEvent: event.$id })">Ver Evento</a>&nbsp; &nbsp;
-    <a ui-sref="event.createAttendees({ keyEvent: event.$id })">Agregar asistentes</a>
-  </li>
-</ul>
+<md-list flex="50">
+  <md-list-item ng-repeat="event in $ctrl.list" class="noright">    
+    <p>{{event.name}}</p>                
+    <md-button ui-sref="event.editEvent({ keyEvent: event.$id })" >
+      <md-icon>mode_edit</md-icon>
+    </md-button>
+    <md-button ui-sref="event.createAttendees({ keyEvent: event.$id })">
+      <md-icon >people</md-icon>
+    </md-button>
+  </md-list-item>
+</md-list>
