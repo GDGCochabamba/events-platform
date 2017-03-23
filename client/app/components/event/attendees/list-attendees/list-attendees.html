@@ -1,21 +1,44 @@
-  <table style="width: 100%">
-    <tr>
-      <th align="center">ID</th>
-      <th align="center">Nombre</th>
-      <th align="center">Apellido</th>
-      <th align="center">Email</th>
-      <th align="center">Estado de Inscripcion</th>
-      <th align="center">Confirmado por</th>
-      <th align="center"></th>
-    </tr>
-    <tr ng-repeat="(key, inscription) in $ctrl.profiles">
-      <td align="center">{{inscription.profile.$id}}</td>
-      <td align="center">{{inscription.profile.firstName}}</td>
-      <td align="center">{{inscription.profile.lastName}} </td>
-      <td align="center">{{inscription.profile.email}} </td>
-      <td align="center">{{inscription.attendee.status}} </td>
-      <td align="center" >{{inscription.confirmed_by.firstName}} </td>
-      <td align="center"><button ng-click="$ctrl.confirmInscription(key)" ng-if="inscription.attendee.status !== 'confirmed'">Confirmar</button></td>
-    </tr>
-    </ul>
-  </table>
+<div>
+  <div layout="row" class="" >
+    <h4 flex="30" >
+      ID
+    </h4>
+    <h4 flex="20" >
+      Nombre completo
+    </h4>
+    <h4 flex="20" >
+      Email
+    </h4>
+    <h4 flex="10" >
+      Estado
+    </h4>
+    <h4 flex="10" >
+      Confirmado por
+    </h4>
+    <h4 flex="10" >
+      
+    </h4>
+  </div>
+  <div layout="row" ng-repeat="(key, inscription) in $ctrl.profiles">
+    <p flex="30" >
+      {{inscription.profile.$id}}
+    </p>
+    <p flex="20" >
+      {{inscription.profile.firstName}} {{inscription.profile.lastName}}
+    </p>
+    <p flex="20" >
+      {{inscription.profile.email}}
+    </p>
+    <p flex="10" >
+      {{inscription.attendee.status}}
+    </p>
+    <p flex="10" >
+      {{inscription.confirmed_by.firstName}}
+    </p>
+    <p flex="10" >
+      <button ng-click="$ctrl.confirmInscription(key)" ng-if="inscription.attendee.status !== 'confirmed'">
+        Confirmar
+      </button>
+    </p>
+  </div>
+</div>

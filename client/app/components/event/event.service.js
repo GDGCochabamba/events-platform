@@ -114,10 +114,26 @@ function EventService($log, $firebaseArray, $firebaseObject, $q, AuthService, Pr
   }
 
   function confirmInscription(uidEvent, uidAttendee) {
+    var deferred = $q.defer();
     var attendee = $firebaseObject(refEventAttendees.child(uidEvent).child(uidAttendee));
-    attendee.status = 'confirmed';
-    attendee.confirmed_by = AuthService.getUserData().uid;
-    return attendee.$save();
+    
+    attendee
+      .$loaded()
+      .then(function() {
+
+        attendee.status = 'confirmed';
+        attendee.confirmed_by = AuthService.getUserData().uid;
+
+        attendee
+          .$save()
+          .then(function (result) {
+            deferred.resolve(result);
+          }).catch(function (err) {
+            deferred.reject(err);
+          });
+      });    
+      
+    return deferred.promise;
   }
 
   function getProfilesForEvent(eventUID) {
