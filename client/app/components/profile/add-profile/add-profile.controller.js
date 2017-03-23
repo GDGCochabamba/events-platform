@@ -1,15 +1,39 @@
-function AddProfileController($log, $state, $stateParams, ProfileService) {
+function AddProfileController(cfpLoadingBar, $log, $state, $mdDialog, $stateParams, ProfileService) {
   var ctrl = this;
 
   ctrl.$onInit  = onInit;
   ctrl.add = add;
 
   function add() {
-    ProfileService.add(ctrl.profile).then(function(ref){
-      var id = ref.key;
-      $log.info('[AddProfileController]', 'added record with id:', id);
-      $state.go('profile.addProfile', {}, { reload: true });
-    });
+    cfpLoadingBar.start();
+    ProfileService
+      .add(ctrl.profile)
+      .then(function(ref){
+        var id = ref.key;
+        $log.info('[AddProfileController]', 'added record with id:', id);
+        cfpLoadingBar.complete();      
+
+        $mdDialog.show(
+          $mdDialog.alert()
+            .clickOutsideToClose(true)
+            .title('Usuario creado!')
+            .textContent(ctrl.profile.email)
+            .ok('Cerrar')
+        );
+
+        $state.go('profile.addProfile', {}, { reload: true });
+
+      })
+      .catch(function(error) {
+        cfpLoadingBar.complete();  
+        $mdDialog.show(
+          $mdDialog.alert()
+            .clickOutsideToClose(true)
+            .title(error.code)
+            .textContent(error.message)
+            .ok('Cerrar')
+        );
+      });
   }
 
   function onInit() {
