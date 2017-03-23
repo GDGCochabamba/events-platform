@@ -8,17 +8,19 @@ function AddProfileController($log, $state, $stateParams, ProfileService) {
     ProfileService.add(ctrl.profile).then(function(ref){
       var id = ref.key;
       $log.info('[AddProfileController]', 'added record with id:', id);
-      $state.go('viewProfile', {
-        keyProfile: id
-      });
+      $state.go('profile.addProfile', {}, { reload: true });
     });
   }
-  
-  
 
   function onInit() {
     ctrl.profile = {
-      firstName: 'Martin'
+      email: '',
+      password: '12345678',
+      firstName: '',
+      lastName: '',
+      birthDate: '',
+      phone: '',
+      gender: ''
     };
   }
 }
