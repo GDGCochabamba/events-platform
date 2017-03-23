@@ -1,10 +1,31 @@
-<event-form event="$ctrl.event" 
-            submit-text="Edit Event"
-            on-action="$ctrl.edit()">
-</event-form>
-<event-item event="$ctrl.event" field-name="sponsors" title-field="Sponsors"></event-item>
-<event-item event="$ctrl.event" field-name="social_media" title-field="Social Media"></event-item>
-<event-item event="$ctrl.event" field-name="schedule" title-field="Schedule"></event-item>
-<event-item event="$ctrl.event" field-name="speakers" title-field="Speakers"></event-item>
-<h2>Asistentes</h2>
-<attendees-list key="$ctrl.key" ></attendees-list>
+<md-tabs md-dynamic-height md-border-bottom>  
+  <md-tab label="Usuarios no inscritos">
+    <md-content class="md-padding">
+      <create-attendees></create-attendees>
+    </md-content>
+  </md-tab>
+  <md-tab label="Lista de Asistentes">
+    <md-content class="md-padding">
+      <attendees-list key="$ctrl.key" ></attendees-list>
+    </md-content>
+  </md-tab>
+  <md-tab label="Datos Generales">
+    <md-content class="md-padding">
+
+      <event-form event="$ctrl.event" 
+                  submit-text="Edit Event"
+                  on-action="$ctrl.edit()">
+      </event-form>
+    </md-content>
+  </md-tab>
+  <md-tab label="Listas sobre el evento">
+    <md-content class="md-padding">
+
+      <event-item event="$ctrl.event" field-name="sponsors" title-field="Sponsors"></event-item>
+      <event-item event="$ctrl.event" field-name="social_media" title-field="Social Media"></event-item>
+      <event-item event="$ctrl.event" field-name="schedule" title-field="Schedule"></event-item>
+      <event-item event="$ctrl.event" field-name="speakers" title-field="Speakers"></event-item>
+
+    </md-content>
+  </md-tab>  
+</md-tabs>

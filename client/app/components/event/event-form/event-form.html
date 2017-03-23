@@ -1,59 +1,59 @@
 <form name="eventForm" method="post" novalidate ng-submit="$ctrl.doAction();">
-    <md-input-container>
+    <md-input-container class="md-block">
         <md-icon class="icon" ng-bind=""></md-icon>
         <label class="label" for="name">Nombre</label>
         <input class="input-text" type="text" name="name" data-ng-model="$ctrl.event.name" required>
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container class="md-block">
         <md-icon class="icon" ng-bind="'perm_contact_calendar'"></md-icon>
         <label class="label" for="startDate">Fecha inicio</label>
         <input type="text" name="startDate" data-ng-model="$ctrl.event.start_date" required>
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container class="md-block">
         <md-icon class="icon" ng-bind="'perm_contact_calendar'"></md-icon>
         <label for="endDate">Fecha Fin</label>
         <input type="text" name="endDate" data-ng-model="$ctrl.event.end_date" required>
     </md-input-container>
     
-    <md-input-container>
+    <md-input-container class="md-block">
         <md-icon class="icon" ng-bind="'place'"></md-icon>
         <input type="text" name="location" data-ng-model="$ctrl.event.location">
         <label for="location">Lugar</label>
     </md-input-container>
     
-    <md-input-container>
-        <md-icon class="icon" ng-bind=""></md-icon>
-        <input type="text" name="description" data-ng-model="$ctrl.event.description">
-        <label for="description">Descripcion</label>
+    <md-input-container class="md-block">
+        <md-icon class="icon" ng-bind=""></md-icon>        
+        <label>Descripción</label>
+        <textarea ng-model="$ctrl.event.description" md-maxlength="150" rows="5" md-select-on-focus></textarea>
     </md-input-container>
     
-    <md-input-container>
+    <md-input-container class="md-block">
         <md-icon class="icon" ng-bind="'people'"></md-icon>
         <input type="text" name="attendees" data-ng-model="$ctrl.event.attendees">
         <label for="attendees">Inscritos</label>
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container class="md-block">
         <md-icon class="icon" ng-bind="'attach_money'"></md-icon>
         <input type="text" name="cost" data-ng-model="$ctrl.event.cost">    
         <label for="cost">Costos</label>
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container class="md-block">
         <md-icon class="icon" ng-bind="'add_a_photo'"></md-icon>
         <input type="text" name="eventImages" data-ng-model="$ctrl.event.event_images">
         <label for="eventImages">Imagenes del evento url</label>
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container class="md-block">
         <md-icon class="icon" ng-bind=""></md-icon>
         <input type="text" name="resources" data-ng-model="$ctrl.event.resources">
         <label for="resources">Recursos</label>
     </md-input-container>
     
-    <md-input-container>
+    <md-input-container class="md-block">
         <md-icon class="icon" ng-bind=""></md-icon>
         <input type="text" name="organizers" data-ng-model="$ctrl.event.organizers">
         <label for="organizers">Organizadores</label>

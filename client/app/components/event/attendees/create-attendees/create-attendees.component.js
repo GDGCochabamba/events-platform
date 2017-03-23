@@ -7,17 +7,7 @@ var createAttendees = {
 
 angular
   .module('components.event')
-  .component('createAttendees', createAttendees)
-  .config(function($stateProvider) {
-    $stateProvider
-      .state('event.createAttendees', {
-        url: '^/create-attendees/:keyEvent',
-        component: 'createAttendees',
-        data: {
-          requiredAuth: true
-        }
-      });
-  });
+  .component('createAttendees', createAttendees);
 
 
 require('./create-attendees.controller');

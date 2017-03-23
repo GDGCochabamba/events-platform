@@ -1,19 +1,18 @@
-<h2>Agregar asistentes</h2>
-<table style="width: 100%">
-  <tr>
-    <th>Id</th>
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Email</th>
-    <th>Estado de Inscripcion</th>
-    <th></th>
-  </tr>
-  <tr ng-repeat="(key, profile) in $ctrl.profiles" ng-if="!profile.inscription.status">
-     <td align="center">{{key}}</td>
-     <td align="center">{{profile.profile.firstName}}</td>
-     <td align="center">{{profile.profile.lastName}} </td>
-     <td align="center">{{profile.profile.email}} </td>
-     <td align="center">{{profile.inscription.status}} </td>
-     <td><button ng-click="$ctrl.addToEvent(key)" ng-if="!profile.inscription.status">Inscribir</button></td>
-  </tr>
-</ul>
+<table layout="column" class="admin-table" >
+  <thead layout="column">
+    <tr layout="row">
+      <th flex="10" ></th>
+      <th flex="35" >Email</th>
+      <th flex="35" >Nombre completo</th>    
+    </tr>
+  </thead>
+  <tbody layout="column">
+    <tr layout="row" ng-repeat="(key, profile) in $ctrl.profiles" ng-if="!profile.inscription.status">      
+      <td flex="10" >
+        <button ng-click="$ctrl.addToEvent(key)" ng-if="!profile.inscription.status">Inscribir</button>
+      </td>
+      <td  flex="35" >{{profile.profile.email}} </td>
+      <td  flex="35" >{{profile.profile.firstName}} {{profile.profile.lastName}}</td>
+    </tr>
+  </tbody>
+</table>

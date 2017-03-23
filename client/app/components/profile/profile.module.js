@@ -1,5 +1,6 @@
 angular.module('components.profile', [
-    'ui.router'
+  'ui.router',
+  'cfp.loadingBar',
 ]);
 
 require('./profile.service');
