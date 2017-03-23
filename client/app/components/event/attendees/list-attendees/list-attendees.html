@@ -1,44 +1,41 @@
-<div>
-  <div layout="row" class="" >
-    <h4 flex="30" >
-      ID
-    </h4>
-    <h4 flex="20" >
-      Nombre completo
-    </h4>
-    <h4 flex="20" >
-      Email
-    </h4>
-    <h4 flex="10" >
-      Estado
-    </h4>
-    <h4 flex="10" >
-      Confirmado por
-    </h4>
-    <h4 flex="10" >
-      
-    </h4>
-  </div>
-  <div layout="row" ng-repeat="(key, inscription) in $ctrl.profiles">
-    <p flex="30" >
-      {{inscription.profile.$id}}
-    </p>
-    <p flex="20" >
-      {{inscription.profile.firstName}} {{inscription.profile.lastName}}
-    </p>
-    <p flex="20" >
-      {{inscription.profile.email}}
-    </p>
-    <p flex="10" >
-      {{inscription.attendee.status}}
-    </p>
-    <p flex="10" >
-      {{inscription.confirmed_by.firstName}}
-    </p>
-    <p flex="10" >
-      <button ng-click="$ctrl.confirmInscription(key)" ng-if="inscription.attendee.status !== 'confirmed'">
-        Confirmar
-      </button>
-    </p>
-  </div>
-</div>
+<table layout="column" class="admin-table" >
+  <thead layout="column">
+    <tr layout="row">
+      <th flex="10" ></th>
+      <th flex="30" >
+        Email
+      </th>
+      <th flex="30" >
+        Nombre completo
+      </th>      
+      <th flex="10" >
+        Estado
+      </th>
+      <th flex="20" >
+        Confirmado por
+      </th>      
+    </tr>
+  </thead>
+  <tbody layout="column">
+    <tr layout="row" ng-repeat="(key, inscription) in $ctrl.profiles" ng-class="{confirmed:inscription.attendee.status === 'confirmed'}">
+      <td flex="10" >
+        <button ng-click="$ctrl.confirmInscription(key)" ng-if="inscription.attendee.status !== 'confirmed'">
+          Confirmar
+        </button>
+      </td>
+      <td flex="30" >
+        {{inscription.profile.email}}
+      </td>
+      <td flex="30" >
+        {{inscription.profile.firstName}} {{inscription.profile.lastName}}
+      </td>      
+      <td flex="10" >
+        {{inscription.attendee.status}}
+      </td>
+      <td flex="20" >
+        {{inscription.confirmed_by.firstName}}
+      </td>      
+    </tr>
+  </tbody>
+</table>   
+  

@@ -1,4 +1,9 @@
-<md-tabs md-dynamic-height md-border-bottom>
+<md-tabs md-dynamic-height md-border-bottom>  
+  <md-tab label="Usuarios no inscritos">
+    <md-content class="md-padding">
+      <create-attendees></create-attendees>
+    </md-content>
+  </md-tab>
   <md-tab label="Lista de Asistentes">
     <md-content class="md-padding">
       <attendees-list key="$ctrl.key" ></attendees-list>
