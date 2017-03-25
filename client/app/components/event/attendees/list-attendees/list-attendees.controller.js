@@ -4,6 +4,23 @@ function AttendeesListController(EventService, $stateParams) {
   ctrl.$onInit = onInit;
   ctrl.getList = getList;
   ctrl.confirmInscription = confirmInscription;
+
+  ctrl.totalBank = 0;
+  ctrl.totalCash = 0;
+  ctrl.totalConfirmed = 0;
+  // ctrl.calculate = calculate;
+
+  // function calculate(attendee) {
+  //   if ( attendee.status === 'confirmed') {
+  //     ctrl.totalConfirmed += 1;
+  //     if ( attendee.paymentMethod !== 'cash') {
+  //       ctrl.totalBank += 1;
+  //     } else {
+  //       ctrl.totalCash += 1;
+  //     }
+  //   }
+  // }
+
   function getList() {
     var attendees = EventService.getEventAttendees(ctrl.key).then(function (attendeeProfiles) {
       ctrl.profiles = attendeeProfiles;

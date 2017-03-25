@@ -1,15 +1,52 @@
+<div>
+  <h2>Estado</h2>
+  <table>
+    <thead>
+      <tr>
+        <th flex="10">
+          Pagos al banco
+        </th>
+        <th flex="10">
+          Cash
+        </th>
+        <th flex="10">
+          Confirmados
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td flex="10" >
+          {{ $ctrl.totalBank }}
+        </td>
+        <td flex="10" >
+          {{ $ctrl.totalcash }}
+        </td>
+        <td flex="10" >
+          {{ $ctrl.totalConfirmed }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <table layout="column" class="admin-table" >
   <thead layout="column">
     <tr layout="row">
       <th flex="10" ></th>
-      <th flex="30" >
+      <th flex="20" >
         Email
       </th>
-      <th flex="30" >
+      <th flex="20" >
         Nombre completo
       </th>      
       <th flex="10" >
         Estado
+      </th>
+      <th flex="10" >
+        Tipo de pago
+      </th>
+      <th flex="10" >
+        Imagen
       </th>
       <th flex="20" >
         Confirmado por
@@ -23,16 +60,27 @@
           Confirmar
         </button>
       </td>
-      <td flex="30" >
+      <td flex="20" >
         {{inscription.profile.email}}
       </td>
-      <td flex="30" >
+      <td flex="20" >
         {{inscription.profile.firstName}} {{inscription.profile.lastName}}
       </td>      
       <td flex="10" >
-        {{inscription.attendee.status}}
+        {{inscription.attendee.status}}        
+      </td>
+      <td flex="10" >
+        {{inscription.attendee.paymentMethod}}        
+      </td>
+      <td flex="10" >
+        <div ng-show="inscription.attendee.image" >
+          <a ng-href="{{inscription.attendee.image}}" target="_blank">
+            <img ng-src="{{inscription.attendee.image}}" alt="" style="width:100%;">        
+          </a>        
+        </div>        
       </td>
       <td flex="20" >
+        {{inscription.confirmed_by.$id}}
         {{inscription.confirmed_by.firstName}}
       </td>      
     </tr>
